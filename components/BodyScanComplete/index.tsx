@@ -169,7 +169,7 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
     handleCameraInitiated(stream);
   };
 
-  const handleCameraInitiated = (stream: MediaStream) => {
+  const handleCameraInitiated = (stream?: MediaStream) => {
     if (cameraRef.current) {
       cameraRef.current.srcObject = stream as MediaStream;
     }

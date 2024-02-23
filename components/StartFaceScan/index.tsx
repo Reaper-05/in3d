@@ -19,8 +19,8 @@ export default function StartFaceScan(props: StartScanProps) {
         </p>
       </div>
       <div className="flex w-full items-center justify-between">
-        <Image src={Wrong} className="ml-8"/>
-        <Image src={Right} className="mr-8"/>
+        <Image src={Wrong} className="ml-8" alt="" />
+        <Image src={Right} className="mr-8" alt="" />
       </div>
       <div className="mb-2 mobile:mb-10 mt-0">
         {faceScanInstructions.map((instruction, index) => {
