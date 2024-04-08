@@ -134,10 +134,11 @@ export default function Record360Video(props: Record360VideoProps) {
   const heading = recordingCountDown < 10 ? "Scan Ends in" : "Scan Starts in";
 
   return (
-    <div className="flex items-center justify-between flex-col mobile:p-5 p-5 h-full">
+    <div className="flex items-center justify-between flex-col px-5 h-full">
       <div>
         <h2 className="font-semibold text-center text-[18px] xsm:w-full m-auto">
-          {heading}
+          {/* {heading} */}
+          When the countdown ends, spin 360° . The scan will last 10 seconds.
         </h2>
         {recordingCountDown >=0 || count >= 1 ? (
           <p className="text-center mb-0 mt-4 text-xlarge font-semibold text-primary">
@@ -147,7 +148,7 @@ export default function Record360Video(props: Record360VideoProps) {
           <p className="text-center mb-0 mt-4 text-xlarge font-semibold text-primary h-[45px]" />
         )}
       </div>
-      <div className="relative w-full emptyAreaHeight emptyAreaHeightScan">
+      <div className="relative w-full !mt-2 emptyAreaHeight emptyAreaHeightScan">
         <div className="w-full h-full bg-gray rounded-lg overflow-hidden">
           <video
             ref={cameraRef}

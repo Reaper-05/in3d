@@ -20,7 +20,7 @@ const ButtonStyle = {
   },
   secondary: {
     ...commonStyle,
-    border: "1px solid rgba(118, 19, 217, 0.80)",
+    // border: "1px solid rgba(118, 19, 217, 0.80)",
     background: "#FFF",
   },
 };

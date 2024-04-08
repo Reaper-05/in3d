@@ -96,15 +96,15 @@ function Instructions() {
     }
   };
   return (
-    <div className="text-black flex justify-between mobile:h-screen overflow-y-scroll mobile:py-10 w-full xsm:h-full flex-col xsm:py-5">
-      {currentInstruction >= 1 && currentInstruction <= 3 && (
+    <div className="text-black flex justify-between mobile:h-screen overflow-y-scroll w-full xsm:h-full flex-col py-5">
+      {/* {currentInstruction >= 1 && currentInstruction <= 3 && (
         <Image
           alt="logo"
           src={ArrowLeft}
           className="mb-0 ml-4 mb-2 cursor-pointer"
           onClick={goBack}
         />
-      )}
+      )} */}
 
       <div className="h-full">{handleInstructions()}</div>
     </div>

@@ -13,11 +13,11 @@ function FaceScanComplete(props: FaceScanCompleteProps) {
 
   const handleImageUpload = () => {
     localStorage.setItem("imagesList", JSON.stringify(imagesList));
-    router.push("body-scan");
+    router.push("body-scan/info");
   };
 
   return (
-    <div className="mobile:px-5 px-5 h-full flex justify-between items-center flex-col h-full gap-y-4">
+    <div className="mobile:px-5 px-5 h-full flex justify-between items-center flex-col gap-y-3">
       <h2 className="text-center mobile:mb-2 xsm:mb-0 font-semibold text-[18px]">
         Happy with your selfies?
       </h2>
@@ -85,7 +85,7 @@ function FaceScanComplete(props: FaceScanCompleteProps) {
         </div>
       </div>
 
-      <div className="flex justify-around w-full mt-5">
+      <div className="flex justify-around w-full">
         <Button
           className="text-primary m-2 !w-[135px] !px-[10px]"
           text="Take Again"

@@ -13,7 +13,7 @@ import { useRouter } from "next/navigation";
 function BodyScan() {
   const router = useRouter();
   const { isCameraGranted } = useCameraPermissions();
-  const [currentStep, setCurrentStep] = useState<number>(0);
+  const [currentStep, setCurrentStep] = useState<number>(2);
   const [completed, setCompleted] = useState(false);
   const [facingMode, setFacingMode] = useState<"user" | "environment">("user");
 
@@ -93,25 +93,19 @@ function BodyScan() {
             facingMode={facingMode}
           />
         );
-      default:
-        return (
-          <BodyScanInstruction
-            handleClick={() => {setCurrentStep(1)}}
-          />
-        );
     }
   };
 
   return (
-    <div className="text-black flex justify-between h-screen flex-col mobile:py-10 xsm:py-5 w-full">
-      {currentStep >= 1 && currentStep <= 2 && !completed && (
+    <div className="text-black flex justify-between h-screen flex-col py-5 w-full">
+      {/* {currentStep >= 1 && currentStep <= 2 && !completed && (
         <Image
           alt="logo"
           src={ArrowLeft}
           className="mb-0 ml-5 cursor-pointer"
           onClick={goBack}
         />
-      )}
+      )} */}
       <div className="h-full">{handleScanStep()}</div>
     </div>
   );

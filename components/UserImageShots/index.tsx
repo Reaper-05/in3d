@@ -92,9 +92,9 @@ function UserImageShots(props: UserImageShotsProps) {
   };
 
   return (
-    <div className="mobile:p-5 5 mobile:pb-0 h-full flex justify-between items-center flex-col">
+    <div className="mobile:pb-0 h-full flex justify-between items-center flex-col">
       <div>
-        <h2 className="text-center mb-4 font-semibold text-medium px-4">
+        <h2 className="text-center mb-1 font-semibold text-small px-4">
           Look into the Camera and Snap a Selfie{" "}
         </h2>
         <p className="text-center font-[500] text-[15px]">
@@ -116,18 +116,18 @@ function UserImageShots(props: UserImageShotsProps) {
             height="640"
             className="absolute z-10 top-0 h-full w-full rounded-[8px] border-shadow border-none bg-[#fff] border"
           ></canvas>
-          
-            <video
-              ref={cameraRef}
-              id="userImage"
-              muted
-              autoPlay
-              playsInline
-              className={`absolute z-10 top-0 h-full w-full border-shadow border-none bg-[#fff] border rounded-[8px] transform ${facingMode === "user" && 'scale-x-[-1]'}`}
-            />
+
+          <video
+            ref={cameraRef}
+            id="userImage"
+            muted
+            autoPlay
+            playsInline
+            className={`absolute z-10 top-0 h-full w-full border-shadow border-none bg-[#fff] border rounded-[8px] transform ${facingMode === "user" && 'scale-x-[-1]'}`}
+          />
         </div>
       </div>
-      <div className="relative flex justify-around w-4/5 h-[100px] w-full items-end max-w-[300px]">
+      <div className="relative flex justify-around h-[100px] w-full items-end max-w-[300px] mt-2">
         <Image
           id="shutter-button"
           className="cursor-pointer"

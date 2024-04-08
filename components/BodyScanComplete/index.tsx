@@ -71,7 +71,7 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
 
     try {
       await uploadData(scan_id, formData)
-        .then(async (response) => {})
+        .then(async (response) => { })
         .catch((error) => {
           setLoader(false);
         })
@@ -135,19 +135,19 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
 
       // Create new scan
       createNewScan(APIKEY, SCANNER_ID)
-        .then((response) => {})
+        .then((response) => { })
         .catch((error) => console.log(error));
 
       // Report OBJ uploaded
       reportOBJUploaded(APIKEY, "12", SCANNER_ID, {
         md5: "ZIPPED_OBJ_FILE_MD5",
       })
-        .then((response) => {})
+        .then((response) => { })
         .catch((error) => console.log(error));
 
       //  Wait measurements (long polling)
       waitMeasurements(APIKEY, "12", SCANNER_ID)
-        .then((response) => {})
+        .then((response) => { })
         .catch((error) => console.log(error));
     }
   };
@@ -180,7 +180,7 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
       <h2 className="text-center mobile:mb-0 xsm:mb-1 font-semibold">
         Happy with Your Full-Body Scan?
       </h2>
-      <div className="flex items-center justify-between mobile:mb-6 xsm:mb-3 mt-3 w-full max-[767px]:justify-around">
+      <div className="flex items-center justify-between mb-3 mt-1.5 w-full max-[767px]:justify-around">
         {ScanCompleteOptions?.map((item) => (
           <div key={item?.title}>
             <Image src={item?.image} alt="check" className="m-auto" />
@@ -204,7 +204,7 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
         </div>
       </div>
 
-      <div className="flex justify-between w-full h-[80px] items-end">
+      <div className="flex justify-between w-full mt-3 items-end">
         <Button
           className="text-primary m-2"
           text="Take Again"
