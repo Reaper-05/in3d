@@ -5,13 +5,14 @@ import { bodyScanInstructions } from "@/constant";
 
 export default function BodyScanInstruction(props: BodyScanInstructionProps) {
   const { handleClick } = props;
+
   return (
-    <div className="flex items-center justify-between flex-col px-5 mobile:minHeight xsm:h-full">
+    <div className="flex items-center justify-between flex-col mobile:p-5 p-5 mobile:minHeight xsm:h-full">
       <div>
-        <h2 className="font-semibold text-center text-small m-auto">
+        <h2 className="font-semibold text-center text-medium m-auto">
           Let’s Capture Your Virtual Twin’s Body
         </h2>
-        <p className="text-center m-auto mb-3 mt-1.5 text-sm max-w-[260px]">
+        <p className="text-center m-auto mb-7 mt-2 text-sm max-w-[260px]">
           A few important tips to get the most accurate Virtual Twin
         </p>
       </div>
@@ -33,7 +34,7 @@ export default function BodyScanInstruction(props: BodyScanInstructionProps) {
                 <p className="text-left text-primary text-[14px] font-semibold mb-1">
                   {instruction.title}
                 </p>
-                <p className="text-left text-[13px] font-[500]">
+                <p className="text-left text-[12px] font-[500]">
                   {instruction.text}
                 </p>
               </div>
@@ -44,7 +45,7 @@ export default function BodyScanInstruction(props: BodyScanInstructionProps) {
       <Button
         text="Next"
         type="primary"
-        className=" max-w-[300px]"
+        className="mt-[10px] max-w-[300px]"
         handleOnClick={handleClick}
       />
     </div>

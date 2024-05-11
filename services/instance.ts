@@ -11,7 +11,7 @@ appServiceInstance.interceptors.request.use(
   async function (config) {
     config.headers.Authorization = `Bearer ${
       process.env.AUTHORIZATION_TOKEN ||
-      "i47AztLard4kaWdkkOBMQ6HMUm17h4cYNXx8aKFtDpSK4D48tSEMSPJOVhEwpnh-5Y1W9jne85QkQoEtef03XA"
+      "dSLJFxOLQLkukIUrsqkgXW7h212BvUpP9bsIsTmPf2eOTyyFoytY230WoTnvjpVc4OR-AUZ_1GslGfah_XJn2A"
     }`;
 
     return config;

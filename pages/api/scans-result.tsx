@@ -7,7 +7,7 @@ export default async function handler(req: any, res: any) {
   }
   try {
     const response = await appServiceInstance.get(
-      `scans/${req?.query?.scanId}/result?type=glb`
+      `scans/${req?.query?.scanId}/result?type=fbx`
     );
 
     res.status(200).json({

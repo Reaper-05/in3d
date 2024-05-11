@@ -64,7 +64,7 @@ export const ScanCompleteOptions = [
     image: roundCheckImage,
   },
   {
-    title: "Good Lighting?",
+    title: "Good Lighting",
     image: roundCheckImage,
   },
   {

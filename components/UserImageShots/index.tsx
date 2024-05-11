@@ -13,7 +13,7 @@ function UserImageShots(props: UserImageShotsProps) {
     next,
     imageData,
     subHeading,
-    style
+    style,
   } = props;
 
   const { isCameraGranted } = useCameraPermissions();
@@ -58,8 +58,8 @@ function UserImageShots(props: UserImageShotsProps) {
           cameraRef.current as HTMLVideoElement,
           0,
           0,
-          canvasRef.current?.width || 330,
-          canvasRef.current?.height || 440,
+          canvasRef.current?.width || 480,
+          canvasRef.current?.height || 640
         );
         const imageSource: string =
           canvasRef.current?.toDataURL("image/jpeg") || "";
@@ -92,9 +92,9 @@ function UserImageShots(props: UserImageShotsProps) {
   };
 
   return (
-    <div className="mobile:pb-0 h-full flex justify-between items-center flex-col">
+    <div className="mobile:p-5 5 mobile:pb-0 h-full flex justify-between items-center flex-col">
       <div>
-        <h2 className="text-center mb-1 font-semibold text-small px-4">
+        <h2 className="text-center mb-4 font-semibold text-medium px-4">
           Look into the Camera and Snap a Selfie{" "}
         </h2>
         <p className="text-center font-[500] text-[15px]">
@@ -107,13 +107,18 @@ function UserImageShots(props: UserImageShotsProps) {
             {angle} FACING PORTRAIT REFERENCE IMAGE
           </p>
         </div> */}
-        <div className="relative emptyAreaHeight overflow-hidden rounded-[8px] border-shadow" style={style}>
+        <div
+          className="relative emptyAreaHeight overflow-hidden rounded-[8px] border-shadow"
+          style={style}
+        >
           <div className="relative border h-full w-full rounded-[8px] border-shadow border-none bg-[#fff]"></div>
           <canvas
             ref={canvasRef}
             id="canvas"
             width="480"
             height="640"
+            // width="900"
+            // height="1200"
             className="absolute z-10 top-0 h-full w-full rounded-[8px] border-shadow border-none bg-[#fff] border"
           ></canvas>
 
@@ -123,11 +128,13 @@ function UserImageShots(props: UserImageShotsProps) {
             muted
             autoPlay
             playsInline
-            className={`absolute z-10 top-0 h-full w-full border-shadow border-none bg-[#fff] border rounded-[8px] transform ${facingMode === "user" && 'scale-x-[-1]'}`}
+            className={`absolute object-cover z-10 top-0 h-full w-full border-shadow border-none bg-[#fff] border rounded-[8px] transform ${
+              facingMode === "user" && "scale-x-[-1]"
+            }`}
           />
         </div>
       </div>
-      <div className="relative flex justify-around h-[100px] w-full items-end max-w-[300px] mt-2">
+      <div className="relative flex justify-around w-4/5 h-[100px] w-full items-end max-w-[300px]">
         <Image
           id="shutter-button"
           className="cursor-pointer"

@@ -9,20 +9,20 @@ export default function StartFaceScan(props: StartScanProps) {
   const { handleClick } = props;
 
   return (
-    <div className="mobile:px-5 px-5 h-full flex justify-between flex-col">
+    <div className="mobile:p-5 p-5 h-full flex justify-between flex-col">
       <div>
         <h2 className="text-center mb-1 mobile:mb-3 mt-0 font-semibold text-base">
           First Step is a Couple Selfies
         </h2>
         <p className="text-center px-[40px] mb-3 mobile:mb-4 text-sm font-[400]">
-          A few important tips to get the most accurate Virtual Twin
+          A few important tips to get the most<br /> accurate Virtual Twin
         </p>
       </div>
       <div className="flex w-full items-center justify-between">
-        <Image src={Wrong} className="ml-8" alt=""/>
-        <Image src={Right} className="mr-8" alt=""/>
+        <Image src={Wrong} className="ml-8" alt="wrong"/>
+        <Image src={Right} className="mr-8" alt="right"/>
       </div>
-      <div className="mb-2 mobile:mb-4 mt-0">
+      <div className="mb-2 mobile:mb-10 mt-0">
         {faceScanInstructions.map((instruction, index) => {
           return (
             <div
@@ -50,7 +50,7 @@ export default function StartFaceScan(props: StartScanProps) {
         <Button
           text="Snap Some Selfies"
           type="primary"
-          className=" max-w-[300px]"
+          className="mt-[10px] max-w-[300px]"
           handleOnClick={() => handleClick(1)}
         />
       </div>

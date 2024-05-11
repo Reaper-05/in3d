@@ -30,7 +30,7 @@ module.exports = {
       white: "#fff",
       black: "#000",
       primary: "rgba(118, 19, 217, 0.80)",
-      red:"#ff0000",
+      red: "#ff0000",
     },
     fontSize: {
       xx: "12px",
@@ -38,7 +38,7 @@ module.exports = {
       small: "16px",
       medium: "18px",
       large: "22px",
-      xlarge: "30px"
+      xlarge: "30px",
     },
   },
   plugins: [],
