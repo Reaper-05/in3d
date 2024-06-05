@@ -41,10 +41,11 @@ function UserImageShots(props: UserImageShotsProps) {
 
   const cameraInit = async () => {
     const stream = await InitCamera(facingMode);
+    // @ts-ignore
     handleCameraInitiated(stream);
   };
 
-  const handleCameraInitiated = (stream?: MediaStream) => {
+  const handleCameraInitiated = (stream: MediaStream) => {
     if (cameraRef.current) {
       cameraRef.current.srcObject = stream as MediaStream;
     }
@@ -111,7 +112,7 @@ function UserImageShots(props: UserImageShotsProps) {
           className="relative emptyAreaHeight overflow-hidden rounded-[8px] border-shadow"
           style={style}
         >
-          <div className="relative border h-full w-full rounded-[8px] border-shadow border-none bg-[#fff]"></div>
+          <div className="relative border w-full h-full rounded-[8px] border-shadow border-none bg-[#fff]"></div>
           <canvas
             ref={canvasRef}
             id="canvas"
@@ -119,7 +120,7 @@ function UserImageShots(props: UserImageShotsProps) {
             height="640"
             // width="900"
             // height="1200"
-            className="absolute z-10 top-0 h-full w-full rounded-[8px] border-shadow border-none bg-[#fff] border"
+            className="absolute object-fill z-10 top-0 h-full w-full rounded-[8px] border-shadow border-none bg-[#fff] border"
           ></canvas>
 
           <video
@@ -128,7 +129,7 @@ function UserImageShots(props: UserImageShotsProps) {
             muted
             autoPlay
             playsInline
-            className={`absolute object-cover z-10 top-0 h-full w-full border-shadow border-none bg-[#fff] border rounded-[8px] transform ${
+            className={`absolute object-fill z-10 top-0 h-full w-full border-shadow border-none bg-[#fff] border rounded-[8px] transform ${
               facingMode === "user" && "scale-x-[-1]"
             }`}
           />
@@ -141,6 +142,7 @@ function UserImageShots(props: UserImageShotsProps) {
           ref={shutterButtonRef}
           src={shutterButtonImage}
           alt="shutter"
+          unoptimized
           onClick={() => {
             if (cameraRef.current && isCameraGranted) {
               handleShutterClick();
@@ -154,6 +156,7 @@ function UserImageShots(props: UserImageShotsProps) {
           alt="switch"
           onClick={switchCamera}
           className="absolute bottom-[13px] right-[0px] cursor-pointer"
+          unoptimized
         />
       </div>
     </div>

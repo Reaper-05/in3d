@@ -23,19 +23,42 @@ function FaceScanComplete(props: FaceScanCompleteProps) {
       </h2>
       <div className="flex items-center justify-between max-[767px]:justify-around mobile:mb-5 xsm:mb-3 mt-0 w-full">
         <div className="px-4">
-          <Image src={roundCheckImage} alt="check" className="m-auto" />
+          <Image
+            src={roundCheckImage}
+            alt="check"
+            className="m-auto"
+            unoptimized
+          />
           <p className="text-[12px] mt-1 font-[500] text-center">No Glasses?</p>
         </div>
         <div className="px-4">
-          <Image src={roundCheckImage} alt="check" className="m-auto" />
+          <Image
+            src={roundCheckImage}
+            alt="check"
+            className="m-auto"
+            unoptimized
+          />
           <p className="text-[12px] mt-1 font-[500] text-center">Hair Tied?</p>
         </div>
         <div className="px-4">
-          <Image src={roundCheckImage} alt="check" className="m-auto" />
-          <p className="text-[12px] mt-1 font-[500] text-center"> Good Lighting?</p>
+          <Image
+            src={roundCheckImage}
+            alt="check"
+            className="m-auto"
+            unoptimized
+          />
+          <p className="text-[12px] mt-1 font-[500] text-center">
+            {" "}
+            Good Lighting?
+          </p>
         </div>
         <div className="px-4">
-          <Image src={roundCheckImage} alt="check" className="m-auto" />
+          <Image
+            src={roundCheckImage}
+            alt="check"
+            className="m-auto"
+            unoptimized
+          />
           <p className="text-[12px] mt-1 font-[500] text-center">Head Only?</p>
         </div>
       </div>
@@ -47,11 +70,14 @@ function FaceScanComplete(props: FaceScanCompleteProps) {
         <Image
           src={front}
           alt="front-camera-view"
-          className="absolute w-full h-full object-cover overflow-hidden rounded-lg -top-2"
+          className="absolute w-full h-full overflow-hidden rounded-lg -top-2"
           width="100"
           height="100"
+          unoptimized
         />
-         <p className="text-[16px] font-[500] absolute left-[50%] -translate-x-[45%] px-2 -bottom-[20px]">Front</p>
+        <p className="text-[16px] font-[500] absolute left-[50%] -translate-x-[45%] px-2 -bottom-[20px]">
+          Front
+        </p>
         <div className="relative border h-full w-full rounded-lg border-primary overflow-hidden  -top-2"></div>
       </div>
       <div className="flex mb-6 mt-6 justify-between w-full">
@@ -59,13 +85,16 @@ function FaceScanComplete(props: FaceScanCompleteProps) {
           {/* <div className="bg-gray border-[1px] flex items-center justify-center px-2 h-[65px] w-[54px] absolute -right-2 px-2 -bottom-[20px] z-20 rounded-lg">
             <p className="text-[14px]  font-semibold">LEFT</p>
           </div> */}
-          <p className="text-[16px] font-[500] absolute left-[50%] -translate-x-[45%] px-2 -bottom-[30px]">Left</p>
+          <p className="text-[16px] font-[500] absolute left-[50%] -translate-x-[45%] px-2 -bottom-[30px]">
+            Left
+          </p>
           <Image
             src={left}
             alt="front-camera-left"
-            className="absolute w-full h-full object-cover overflow-hidden rounded-lg"
+            className="absolute w-full h-full overflow-hidden rounded-lg"
             width="100"
             height="100"
+            unoptimized
           />
           <div className="relative border h-full w-full rounded-lg border-primary"></div>
         </div>
@@ -73,13 +102,16 @@ function FaceScanComplete(props: FaceScanCompleteProps) {
           {/* <div className="bg-gray border-[1px] flex items-center justify-center px-2 h-[65px] w-[54px] absolute -right-2 px-2 -bottom-[20px] z-20 rounded-lg">
             <p className="text-[14px] font-semibold">RIGHT</p>
           </div> */}
-          <p className="text-[16px] font-[500] absolute left-[50%] -translate-x-[45%] px-2 -bottom-[30px]">Right</p>
+          <p className="text-[16px] font-[500] absolute left-[50%] -translate-x-[45%] px-2 -bottom-[30px]">
+            Right
+          </p>
           <Image
             src={right}
             alt="front-camera-right"
-            className="absolute w-full h-full object-cover overflow-hidden rounded-lg"
+            className="absolute w-full h-full overflow-hidden rounded-lg"
             width="100"
             height="100"
+            unoptimized
           />
           <div className="relative border h-full w-full rounded-lg border-primary overflow-hidden"></div>
         </div>

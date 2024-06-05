@@ -5,7 +5,7 @@ import rotateGreyImage from "@/assets/rotateGrey.svg";
 import BodyScanComplete from "@/components/BodyScanComplete";
 import useCameraPermissions from "@/hooks/userCameraPermission";
 import { Record360VideoProps } from "@/types";
-import { InitCamera } from "@/utils/common";
+import { toast } from "react-toastify";
 
 const videoLinks: any = [];
 
@@ -48,8 +48,13 @@ export default function Record360Video(props: Record360VideoProps) {
       .getUserMedia({
         video: {
           facingMode,
-          width: 330,
-          height: 440,
+          aspectRatio: 12 / 9,
+          width: {
+            min: 480,
+          },
+          height: {
+            min: 640,
+          },
         },
       })
       .then((stream) =>
@@ -62,7 +67,11 @@ export default function Record360Video(props: Record360VideoProps) {
             setRecordingComplete(true);
             videoLinks.push(video);
           })
-      );
+      )
+      .catch((e) => {
+        toast.error("Something went wrong during initializing camera");
+        console.log(e);
+      });
   };
 
   const record = (stream: any, ms: any) => {
@@ -152,10 +161,10 @@ export default function Record360Video(props: Record360VideoProps) {
           <video
             ref={cameraRef}
             id="userVideo"
-            muted
-            autoPlay
-            playsInline
-            className={`h-full w-full bg-white transform ${
+            autoPlay={true}
+            playsInline={true}
+            muted={true}
+            className={`h-full w-full bg-white transform object-fill ${
               facingMode === "user" && "scale-x-[-1]"
             }`}
           />{" "}
@@ -168,6 +177,7 @@ export default function Record360Video(props: Record360VideoProps) {
           onClick={() => switchCamera()}
           width={30}
           height={35}
+          unoptimized
         />
       </div>
     </div>

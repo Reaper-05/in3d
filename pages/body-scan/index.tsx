@@ -9,7 +9,6 @@ import Image from "next/image";
 import ArrowLeft from "@/assets/ArrowLeft.svg";
 import { useRouter } from "next/navigation";
 
-
 function BodyScan() {
   const router = useRouter();
   const { isCameraGranted } = useCameraPermissions();
@@ -26,9 +25,7 @@ function BodyScan() {
       cameraInitRef.current = true;
       cameraInit();
       console.log("effect");
-      
     }
-    
   }, [facingMode, currentStep]);
 
   const cameraInit = async () => {
@@ -52,7 +49,6 @@ function BodyScan() {
     } else {
       setCurrentStep(currentStep - 1);
     }
-    
   };
 
   const handleScanStep = () => {
@@ -96,7 +92,9 @@ function BodyScan() {
       default:
         return (
           <BodyScanInstruction
-            handleClick={() => {setCurrentStep(1)}}
+            handleClick={() => {
+              setCurrentStep(1);
+            }}
           />
         );
     }
@@ -110,6 +108,7 @@ function BodyScan() {
           src={ArrowLeft}
           className="mb-0 ml-5 cursor-pointer"
           onClick={goBack}
+          unoptimized
         />
       )}
       <div className="h-full">{handleScanStep()}</div>

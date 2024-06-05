@@ -29,6 +29,7 @@ export default function BodyScanInstruction(props: BodyScanInstructionProps) {
                 className="block w-24"
                 alt={`instruction-${index + 1}`}
                 src={instruction.image}
+                unoptimized
               />
               <div className="pl-4 w-full">
                 <p className="text-left text-primary text-[14px] font-semibold mb-1">

@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
 import {
   b64toBlob,
+  downloadURI,
   getBase64Data,
   InitCamera,
   stopCamera,
@@ -111,19 +112,19 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
 
   const uploadFiles = async () => {
     try {
-    if (loader) return;
-    stopCamera();
-    const imagesList = localStorage.getItem("imagesList") || "{}";
-    const { front, left, right } = JSON.parse(imagesList);
-    const frontImage = b64toBlob(getBase64Data(front));
-    const leftImage = b64toBlob(getBase64Data(left));
-    const rightImage = b64toBlob(getBase64Data(right));
-    setLoader(true);
-    const fetchVideo = await fetch(video);
-    const videoBlob = await fetchVideo.blob();
+      if (loader) return;
+      stopCamera();
+      const imagesList = localStorage.getItem("imagesList") || "{}";
+      const { front, left, right } = JSON.parse(imagesList);
+      const frontImage = b64toBlob(getBase64Data(front));
+      const leftImage = b64toBlob(getBase64Data(left));
+      const rightImage = b64toBlob(getBase64Data(right));
+      setLoader(true);
+      const fetchVideo = await fetch(video);
+      const videoBlob = await fetchVideo.blob();
+
       // Sample running code
       // const newData = await foo();
-
       // const frontImage = newData.frontNew;
       // const leftImage = newData.leftNew;
       // const rightImage = newData.rightNew;
@@ -132,34 +133,36 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
       // );
       // const videoBlob = await fetchVideo.blob();
 
-    const files = [
-      { name: "head/00000.jpg", bytes: frontImage },
-      { name: "head/00001.jpg", bytes: leftImage },
-      { name: "head/00002.jpg", bytes: rightImage },
-      { name: "body/rgb.mp4", bytes: videoBlob },
-    ];
-    const scan_id = await handleScanIdGenerate();
-    setScanId(scan_id);
+      const files = [
+        { name: "head/00000.jpg", bytes: frontImage },
+        { name: "head/00001.jpg", bytes: leftImage },
+        { name: "head/00002.jpg", bytes: rightImage },
+        { name: "body/rgb.mp4", bytes: videoBlob },
+      ];
+      const scan_id = await handleScanIdGenerate();
+      setScanId(scan_id);
 
-    const formData = new FormData();
-    files.forEach((file) => {
-      formData.append("file", file.bytes, file.name);
-    });
+      const formData = new FormData();
+      files.forEach((file) => {
+        formData.append("file", file.bytes, file.name);
+      });
 
-    try {
-      await uploadData(scan_id, formData)
-          .then(async (response) => {})
-        .catch((error) => {
-          setLoader(false);
-        })
-        .finally(async () => {
-          // tgScanner();
-          setRefreshInterval(5000);
-        });
-    } catch (error) {
-      setLoader(false);
-      console.error(error);
-    }
+      try {
+        await uploadData(scan_id, formData)
+          .then(async (response) => {
+            toast.success("Assets Uploaded Successfully");
+          })
+          .catch((error) => {
+            setLoader(false);
+          })
+          .finally(async () => {
+            // tgScanner();
+            setRefreshInterval(5000);
+          });
+      } catch (error) {
+        setLoader(false);
+        console.error(error);
+      }
     } catch (error: any) {
       toast.error("Something went wrong");
       console.error(error);
@@ -175,8 +178,11 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
           if (res?.data?.status === "completed") {
             const result: any = await handleFetchResult(scanId);
             if (result) {
+              if (result?.data?.url) {
+                downloadURI(result.data.url, "model_T.fbx");
+              }
               setScanResult(result);
-              SuccessNotify("Data uploaded");
+              SuccessNotify("FBX model downloaded successfully");
               setLoader(false);
             }
           } else {
@@ -278,10 +284,11 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
 
   const cameraInit = async () => {
     const stream = await InitCamera();
+    // @ts-ignore
     handleCameraInitiated(stream);
   };
 
-  const handleCameraInitiated = (stream?: MediaStream) => {
+  const handleCameraInitiated = (stream: MediaStream) => {
     if (cameraRef.current) {
       cameraRef.current.srcObject = stream as MediaStream;
     }
@@ -295,7 +302,12 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
       <div className="flex items-center justify-between mobile:mb-6 xsm:mb-3 mt-3 w-full max-[767px]:justify-around">
         {ScanCompleteOptions?.map((item) => (
           <div key={item?.title}>
-            <Image src={item?.image} alt="check" className="m-auto" />
+            <Image
+              src={item?.image}
+              alt="check"
+              className="m-auto"
+              unoptimized
+            />
             <p className="text-[12px] font-[500] max-w-[65px] mt-1 text-center text-black ">
               {item?.title}
             </p>
@@ -308,7 +320,7 @@ function BodyScanComplete(props: BodyScanCompleteProps) {
         <div className="w-full h-full bg-gray rounded-lg overflow-hidden">
           <video
             controls
-            className="h-full w-full bg-white object-cover videoPlayer"
+            className="h-full w-full bg-white videoPlayer object-fill"
             autoPlay={true}
           >
             <source src={video} type="video/mp4"></source>

@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 export const b64toBlob = (
   b64Data: string,
   contentType = "image/jpeg",
@@ -57,13 +59,32 @@ export const InitCamera = async (facingMode?: any) => {
       video: {
         facingMode,
         // aspectRatio: isAndroid() ? undefined : 3 / 4,
-        aspectRatio: undefined,
+        aspectRatio: 12 / 9,
+        width: {
+          min: 480,
+        },
+        height: {
+          min: 640,
+        },
       },
     });
     return stream;
   } catch (error) {
     console.log(error, "init camera error");
+    toast.error("Something went wrong during initializing camera");
   }
 };
 
 export const getBase64Data = (imageData: string) => imageData?.split(",")?.[1];
+
+export function downloadURI(uri: string, name: string) {
+  console.log("Downloading FBX from URL");
+
+  var link = document.createElement("a");
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  link.remove();
+}

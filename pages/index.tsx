@@ -133,7 +133,7 @@ export default function Home() {
       <div>
         {/* <button onClick={convertFBXtoOBJ}>Run the operation</button> */}
 
-        <Image alt="logo" src={Logo} className="m-auto mb-3" />
+        <Image alt="logo" src={Logo} className="m-auto mb-3" unoptimized />
         <h2 className="text-center text-black text-[20px] font-semibold">
           Let’s Create your Virtual Twin
         </h2>

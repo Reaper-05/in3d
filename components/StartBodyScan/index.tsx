@@ -17,7 +17,7 @@ export default function StartBodyScan(props: StartBodyScanProps) {
           Make sure to maintain the A-pose throughout the 360° spin
         </p> */}
       </div>
-      <div className="relative w-full emptyAreaHeight emptyAreaHeightScan w-[330px]">
+      <div className="relative w-full emptyAreaHeight emptyAreaHeightScan">
         <div className="w-full h-full bg-gray rounded-lg overflow-hidden">
           <video
             ref={cameraRef}
@@ -25,7 +25,7 @@ export default function StartBodyScan(props: StartBodyScanProps) {
             muted
             autoPlay
             playsInline
-            className=" h-full w-full bg-white transform scale-x-[-1]"
+            className="h-full w-full bg-white transform scale-x-[-1] object-fill"
           />
         </div>
       </div>

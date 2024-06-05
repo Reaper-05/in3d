@@ -2,8 +2,8 @@ import Image from "next/image";
 import Button from "@/components/Button";
 import { StartScanProps } from "@/types";
 import { faceScanInstructions } from "@/constant";
-import Wrong from '../../assets/wrong.svg';
-import Right from '../../assets/right.svg';
+import Wrong from "../../assets/wrong.svg";
+import Right from "../../assets/right.svg";
 
 export default function StartFaceScan(props: StartScanProps) {
   const { handleClick } = props;
@@ -15,12 +15,13 @@ export default function StartFaceScan(props: StartScanProps) {
           First Step is a Couple Selfies
         </h2>
         <p className="text-center px-[40px] mb-3 mobile:mb-4 text-sm font-[400]">
-          A few important tips to get the most<br /> accurate Virtual Twin
+          A few important tips to get the most
+          <br /> accurate Virtual Twin
         </p>
       </div>
       <div className="flex w-full items-center justify-between">
-        <Image src={Wrong} className="ml-8" alt="wrong"/>
-        <Image src={Right} className="mr-8" alt="right"/>
+        <Image src={Wrong} className="ml-8" alt="wrong" unoptimized />
+        <Image src={Right} className="mr-8" alt="right" unoptimized />
       </div>
       <div className="mb-2 mobile:mb-10 mt-0">
         {faceScanInstructions.map((instruction, index) => {
@@ -33,6 +34,7 @@ export default function StartFaceScan(props: StartScanProps) {
                 className="block max-w-[90px]"
                 alt={`instruction-${index + 1}`}
                 src={instruction.leftImage}
+                unoptimized
               />
               <p className="text-center text-primary text-[14px] font-[600] max-w-[110px]">
                 {instruction.text}
@@ -41,6 +43,7 @@ export default function StartFaceScan(props: StartScanProps) {
                 className="block max-w-[90px]"
                 alt={`instruction-${index + 1}`}
                 src={instruction.rightImage}
+                unoptimized
               />
             </div>
           );

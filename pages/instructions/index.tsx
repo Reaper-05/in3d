@@ -103,6 +103,7 @@ function Instructions() {
           src={ArrowLeft}
           className="mb-0 ml-4 mb-2 cursor-pointer"
           onClick={goBack}
+          unoptimized
         />
       )}
 
